@@ -22,7 +22,9 @@ class HelpMenu(ListPageSource):
             description=f"```{self.ctx.bot.PREFIX}command <argument>```",
             colour=self.ctx.author.colour,
         )
-        help_embed.set_thumbnail(url=quick_flips_bot.thumbnail_link)
+        help_embed.set_thumbnail(
+            url=r"https://cdn.discordapp.com/attachments/879075886496899083/889219974206484500/dfaf229ee34edcf67791d91d1f5e07f1.png"
+        )
         help_embed.set_author(name="QuickFlips Bot")
         help_embed.set_footer(
             text=f"{offset:,} - {min(len_data,offset+self.per_page-1):,} of {len_data:,} commands."
