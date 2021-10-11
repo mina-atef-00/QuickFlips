@@ -50,9 +50,6 @@ class QuickBot:
     # ? mongo db password
     mongo_password: str
 
-    # ? Subscription renewal period
-    sub_renew_period: timedelta
-
 
 #! CHANGE THE CONFIGURATION HERE
 quick_flips_bot = QuickBot(
