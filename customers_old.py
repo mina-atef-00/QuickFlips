@@ -1,16 +1,14 @@
 from typing import Optional
+
 from discord.embeds import Embed
+from discord.ext.commands import Cog, command, has_permissions
 from discord.ext.commands.context import Context
 from discord.ext.commands.core import guild_only
-from discord.ext.commands import (
-    Cog,
-    command,
-    has_permissions,
-)
 from discord.utils import get
+
 from SETUP import quick_flips_bot
 from src.customer.customer_check import check_invoice_payment
-from src.db.mongo import mongo_connect, create_subscription, del_subscription
+from src.db.mongo import create_subscription, del_subscription, mongo_connect
 
 # from pprint import pprint
 
@@ -54,6 +52,7 @@ class Customers(Cog):
                 members_list,
             )
         )
+
         if None in members:
             return await ctx.send(
                 f"**You entered a wrong member id.**\nUse `{self.bot.PREFIX}RemoveCustomers member(s)_id`"
@@ -169,6 +168,7 @@ class Customers(Cog):
             return await ctx.send(
                 "**Either Your invoice id is wrong, or you haven't paid the specified amount, or there's a connection error so please try again later.**"
             )
+
         else:
             customer_embed = Embed(
                 title="Congratulations You are now a Customer!",

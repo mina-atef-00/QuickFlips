@@ -1,15 +1,16 @@
 import asyncio
+from pprint import pprint
 from typing import Optional
-from discord import Embed, User, Message, Guild, Member, Reaction
+
+from discord import Embed, Guild, Member, Message, Reaction, User
 from discord.ext.commands import Cog
 from discord.utils import get
 from flag import flag
 from pytz import country_names
 from SETUP import quick_flips_bot
+from src.cogs.quick_search import create_item_embeds, send_pages
 from src.searching.categories import get_categ_id
 from src.searching.searches import fetch_items
-from src.cogs.quick_search import send_pages, create_item_embeds
-from pprint import pprint
 
 emji_code_dict = {code: flag(f":{code}:") for code in country_names.keys()}
 
@@ -56,12 +57,11 @@ class EasyCommands(Cog):
         sort_price = None
         categ_name = None
         categ_id = None
+
         while True:
             try:
                 reaction = await self.bot.wait_for(
-                    "raw_reaction_add",
-                    timeout=100.0,
-                    check=check,
+                    "raw_reaction_add", timeout=100.0, check=check,
                 )
                 if reaction.user_id == self.bot.user.id:
                     continue
@@ -147,16 +147,11 @@ class EasyCommands(Cog):
             except asyncio.TimeoutError:
                 break
             except:
-                raise  #!DEBUG
+                # raise  #!DEBUG
                 return await trgt.send("Please add a valid reaction")
 
     @Cog.listener()
     async def on_message(self, message: Message):
-        # print(
-        #     not message.author.bot,
-        #     not message.content.startswith(self.bot.PREFIX),
-        #     (self.customer_role in message.author.roles),
-        # )  #!DEBUG
         if not message.author.bot:
             if (not message.content.startswith(self.bot.PREFIX)) and (
                 self.customer_role in message.author.roles
