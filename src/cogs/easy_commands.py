@@ -147,7 +147,7 @@ class EasyCommands(Cog):
             except asyncio.TimeoutError:
                 break
             except:
-                # raise  #!DEBUG
+                raise  #!DEBUG
                 return await trgt.send("Please add a valid reaction")
 
     @Cog.listener()
