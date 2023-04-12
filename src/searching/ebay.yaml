@@ -1,0 +1,5 @@
+name: ebay_api_config
+
+# Finding API - https://www.x.com/developers/ebay/products/finding-api
+svcs.ebay.com:
+  appid: ADD-YOUR-ID-HERE
