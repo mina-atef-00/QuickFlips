@@ -25,7 +25,7 @@ pathspec==0.9.0
 python-dotenv==0.19.0
 pytz==2021.1
 regex==2021.8.28
-requests==2.26.0
+requests==2.31.0
 six==1.16.0
 tomli==1.2.1
 tzlocal==2.1
